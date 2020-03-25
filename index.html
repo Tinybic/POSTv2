@@ -964,15 +964,7 @@
             }
         },
         beforeMount: function () {
-            // let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
-            //
-            // if(flag){
-            //     this.isMobile = true;
-            //     console.log('mobile');
-            // }else{
-            //     console.log('web');
-            // }
-            console.log(document.documentElement.clientWidth);
+            // console.log(document.documentElement.clientWidth);
             if (this._isMobile()) {
                 this.isMobile = true;
                 console.log('mobile');
