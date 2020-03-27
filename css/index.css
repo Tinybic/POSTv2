@@ -479,6 +479,9 @@ a, ul, li {
     .logo-svg-small{
         height: 4vw !important;
     }
+    .header .menu img, #section1 .menu img, #section1mobile .menu img {
+        width: 31px;
+    }
     .section0-contain, .section1-contain, .section3-contain {
         padding: 0;
     }
@@ -571,6 +574,9 @@ a, ul, li {
     }
     .slide-img-contain > div {
         padding: 10vh 0;
+    }
+    .header .menu img, #section1 .menu img, #section1mobile .menu img {
+        width: 31px;
     }
     .fp-slidesNav.fp-bottom {
         bottom: 14px;
