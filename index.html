@@ -149,10 +149,8 @@
                 <div class="section1-contain">
                     <div class="section1-div section1-div-mob" style="background-color: #36574d;">
                         <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce from
-                            the
-                            farm is served in restaurants throughout POST. The first harvest is anticipated in the
-                            summer
-                            of 2021.</p>
+                            the farm is served in restaurants throughout POST. The first harvest is anticipated in the
+                            summer of 2021.</p>
                         <div class="section1-div-title">FARM</div>
                     </div>
                 </div>
@@ -256,17 +254,19 @@
         <div class="section" id="section2">
             <div class="slide active slide-img-contain">
                 <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
-                    <div v-if="isPhone">
+                    <div v-if="isPhone || isPhoneLandscape">
                         <div class="section2-item-phone">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
                             </div>
-                            <span class="event-title">EVENT</span>
-                            <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
-                            <span class="event-date">9/25</span>
+                            <div>
+                                <span class="event-title">EVENT</span>
+                                <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
+                                <span class="event-date">9/25</span>
+                            </div>
                         </div>
                     </div>
-                    <div v-if="!isPhone">
+                    <div v-else>
                         <div class="section2-item">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
@@ -296,17 +296,19 @@
             </div>
             <div class="slide slide-img-contain">
                 <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
-                    <div v-if="isPhone">
+                    <div v-if="isPhone || isPhoneLandscape">
                         <div class="section2-item-phone">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/news_demo.png" alt="event">
                             </div>
-                            <span class="event-title">NEWS</span>
-                            <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
-                            <span class="event-date">9/24</span>
+                            <div>
+                                <span class="event-title">NEWS</span>
+                                <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
+                                <span class="event-date">9/24</span>
+                            </div>
                         </div>
                     </div>
-                    <div v-if="!isPhone">
+                    <div v-else>
                         <div class="section2-item">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
@@ -336,17 +338,19 @@
             </div>
             <div class="slide slide-img-contain">
                 <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
-                    <div v-if="isPhone">
+                    <div v-if="isPhone || isPhoneLandscape">
                         <div class="section2-item-phone">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/news_demo2.png" alt="event">
                             </div>
-                            <span class="event-title">FOOD</span>
-                            <span class="event-name">El Tiempo releases summer drink menu</span>
-                            <span class="event-date">9/23</span>
+                            <div>
+                                <span class="event-title">FOOD</span>
+                                <span class="event-name">El Tiempo releases summer drink menu</span>
+                                <span class="event-date">9/23</span>
+                            </div>
                         </div>
                     </div>
-                    <div v-if="!isPhone">
+                    <div v-else>
                         <div class="section2-item">
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
@@ -381,13 +385,15 @@
             <div class="section3-contain">
                 <div class="slide active slide-img-contain layout1">
                     <!--layout1-->
-                    <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
-                    <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
+                    <div class="layout1">
+                        <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
+                        <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
+                    </div>
 
                     <!--footer-->
-                    <footer-component v-if="!isPhone"></footer-component>
+                    <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
-                <div class="slide slide-img-contain">
+                <div v-if="!isPhoneLandscape" class="slide slide-img-contain">
                     <!--layout2-->
                     <div class="layout2">
                         <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
@@ -395,9 +401,9 @@
                     </div>
 
                     <!--footer-->
-                    <footer-component v-if="!isPhone"></footer-component>
+                    <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
-                <div class="slide slide-img-contain">
+                <div v-if="!isPhoneLandscape" class="slide slide-img-contain">
                     <!--layout2-->
                     <div class="layout2">
                         <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
@@ -405,12 +411,12 @@
                     </div>
 
                     <!--footer-->
-                    <footer-component v-if="!isPhone"></footer-component>
+                    <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
             </div>
         </div>
 
-        <div v-if="isPhone" class="section" id="section4">
+        <div v-if="isPhone || isPhoneLandscape" class="section" id="section4">
             <!--footer-->
             <footer-component></footer-component>
         </div>
@@ -512,7 +518,6 @@
                     <span>email here</span>
                     <img src="image/icons/right.svg" alt="click" style="width: 36px;">
                 </div>
-
             </div>
         </div>
     </template>
@@ -522,7 +527,12 @@
 <script src="js/fullpage.js"></script>
 <script type="text/javascript">
     Vue.component('footer-component',{
-        template: '#footerComponent'
+        template: '#footerComponent',
+        methods:{
+            changeSideBarStatus(param){
+                this.$parent.changeSideBarStatus(param);
+            }
+        }
     })
 
     let app = new Vue({
@@ -535,11 +545,13 @@
             isBottom:false,
             isPortrait:true,//is portrait or not
             isPhone:false,//is phone device or not
+            isPhoneLandscape:false,
             sectionIndex:0,
             email: ''
         },
         methods: {
-            changeSideBarStatus: function (param) {
+            changeSideBarStatus(param) {
+                // fullpage_api.moveSlideRight();
                 if (param === 'mail') {
                     this.email = '';
                     this.showMailDialog = !this.showMailDialog;
@@ -572,6 +584,10 @@
                     this.isPhone = true;
                 }
 
+                if(!this.isPortrait && height <= 450){
+                    this.isPhoneLandscape = true;
+                }
+
                 console.log(this.isPhone);
                 console.log(height);
                 console.log(width);
@@ -592,6 +608,36 @@
                     _this.sectionIndex = destination.index;
                 }
             });
+
+            // let obj = document.getElementById('app');
+            // let downFlag = false;
+            // let position = {
+            //     X: 0,
+            //     Y: 0
+            // };
+            //
+            // obj.onmousedown = function (down) {
+            //     downFlag = true;
+            //     // Record click position
+            //     position.X = down.clientX;
+            //     position.Y = down.clientY;
+            //     console.log(downFlag);
+            // };
+            //
+            // obj.onmouseup = function (up) {
+            //     downFlag = false;
+            //     console.log(downFlag);
+            // };
+            //
+            // obj.onmousemove = function (move) {
+            //     // console.log(downFlag)
+            //     if (downFlag) {
+            //         // if (position.X !== move.clientX || position.Y !== move.clientY) {
+            //         //     console.log("moved");
+            //         //     // Do stuff here
+            //         // }
+            //     }
+            // };
         }
     })
 </script>
