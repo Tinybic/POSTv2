@@ -111,10 +111,10 @@ a, ul, li {
     cursor: pointer;
 }
 
-.header .menu img:hover, #section1 .menu img:hover, #section1mobile .menu img:hover {
-    transform: scale(1.2);
-    transition: transform 100ms linear;
-}
+/*.header .menu img:hover, #section1 .menu img:hover, #section1mobile .menu img:hover {*/
+    /*transform: scale(1.2);*/
+    /*transition: transform 100ms linear;*/
+/*}*/
 
 .section {
     position: relative;
@@ -131,7 +131,7 @@ a, ul, li {
 .slide-img-contain > div {
     /*padding: 105px 0;*/
     /*padding: 79px 0;*/
-    padding: 9vh 0;
+    /*padding: 9vh 0;*/
     box-sizing: border-box;
 }
 
@@ -143,8 +143,8 @@ a, ul, li {
 
 .slide-title {
     position: absolute;
-    /*bottom: 1.5rem;*/
-    bottom: -3.5rem;
+    bottom: 1.5rem;
+    /*bottom: -3.5rem;*/
     color: #fff;
     font-size: 3.75rem;
     display: block;
@@ -390,10 +390,10 @@ a, ul, li {
 
 }
 
-.close-side:hover, .close-mail:hover {
-    transform: rotate(90deg);
-    transition: transform 0.5s;
-}
+/*.close-side:hover, .close-mail:hover {*/
+    /*transform: rotate(90deg);*/
+    /*transition: transform 0.5s;*/
+/*}*/
 
 .nav-item:nth-child(3), .nav-item:nth-child(4) {
     margin-top: 60px;
@@ -412,11 +412,11 @@ a, ul, li {
     cursor: pointer;
 }
 
-.nav-list li:hover {
-    color: #C6E6FF;
-    transform: scale(1.05) translateX(30px);
-    transition: all 0.4s;
-}
+/*.nav-list li:hover {*/
+    /*color: #C6E6FF;*/
+    /*transform: scale(1.05) translateX(30px);*/
+    /*transition: all 0.4s;*/
+/*}*/
 /*side bar ends*/
 
 /*mail dialog starts*/
