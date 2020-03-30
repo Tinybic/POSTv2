@@ -64,9 +64,9 @@ a, ul, li {
     z-index: 2;
 }
 
-.fp-controlArrow {
-    display: none;
-}
+/*.fp-controlArrow {*/
+    /*display: none;*/
+/*}*/
 
 .fp-slidesNav {
     left: unset !important;
@@ -119,6 +119,7 @@ a, ul, li {
 .section {
     position: relative;
     width: 100%;
+    margin-bottom: 40px;
     /*padding: 2.7vh 3.1vw 9.7vh;*/
     /*padding: 0 3.1vw;*/
 }
@@ -277,30 +278,40 @@ a, ul, li {
     line-height: 1.875rem;
 }
 
-#section3 .layout1 .slide-img {
+#section3 .layout1 .slide-img{
     width: 100%;
     height: 42vw;
     object-fit: cover;
 }
 
-#section3 .layout1-title, #section3 .layout2-title {
-    font-size: 3.75rem;
+#section4 .layout1 .slide-img {
+    width: 100%;
+    height: 28vw;
+    object-fit: cover;
 }
 
-#section3 .layout2{
+#section3 .layout1-title, #section3 .layout2-title,
+#section4 .layout1-title, #section4 .layout2-title{
+    font-size: 3.75rem;
+}
+#section3 .layout1-title{
+    position: absolute;
+}
+
+#section3 .layout2,#section4 .layout2{
     display: flex;
     height: 36vw;
     /*padding: 184px 0 105px 0;*/
-    padding: 70px 0 105px 0;
+    padding: 100px 0 105px 0;
 }
 
-#section3 .layout2 .slide-img {
+#section3 .layout2 .slide-img,#section4 .layout2 .slide-img {
     width: 65%;
     height: 100%;
     object-fit: cover;
 }
 
-#section3 .layout2-title {
+#section3 .layout2-title,#section4 .layout2-title {
     display: block;
     width: 35%;
     height: 100%;
@@ -313,7 +324,7 @@ a, ul, li {
     border-top: solid 4px #fff;
     display: flex;
     justify-content: space-between;
-    padding: 40px 0 100px;
+    padding: 40px 0 0;
 }
 
 .footer-column{
@@ -471,8 +482,10 @@ a, ul, li {
     color: #fff;
 }
 /*mail dialog ends*/
-
 @media screen and (max-width: 1024px) and (orientation: portrait) {
+    .fp-controlArrow.fp-prev,.fp-controlArrow.fp-next{
+        display: none;
+    }
     .logo-svg{
         height: 12vw;
     }
@@ -500,8 +513,14 @@ a, ul, li {
     .slide-img-contain > div{
         padding: 8.5vh 0 0;
     }
+    #section4 .slide-img-contain > div{
+        padding: 0;
+    }
     .slide-img, #section3 .layout1 .slide-img {
         height: 76vh;
+    }
+    #section4 .layout1 .slide-img{
+        height: 28vh;
     }
     .slide-title{
         bottom: 2.5rem;
@@ -513,11 +532,17 @@ a, ul, li {
     #section1 .slide-img-contain > div,
     #section1mobile .slide-img-contain > div,
     #section2 .slide-img-contain > div,
-    #section3 .slide-img-contain > div {
+    #section3 .slide-img-contain > div{
         padding: 9vh 0;
     }
+
+    #section4 .slide-img-contain > div{
+        padding: 0;
+    }
+
     .section1-div {
-        padding: 2.75rem;
+        /*padding: 2.75rem;*/
+        padding: 8vw;
     }
     .section1-div p, .section1-div-title {
         width: 60%;
@@ -533,9 +558,18 @@ a, ul, li {
         margin-bottom: 20px;
     }
 
+    #section3 .layout1-title {
+        position: unset;
+    }
+
     .layout1-title{
         padding: 0 3.1vw;
+        margin-top: 15px;
     }
+
+    /*#section4 .section3-contain{*/
+    /*display: none;*/
+    /*}*/
 
     .footer{
         padding: 40px 0 200px;
@@ -554,9 +588,18 @@ a, ul, li {
     .email{
         padding-bottom: 0;
     }
-}
 
+    .fp-scrollable{
+        display: block;
+    }
+}
 @media screen and (max-width: 460px) and (orientation: portrait) {
+    #section0 .fp-tableCell {
+        vertical-align: unset;
+    }
+    .fp-controlArrow.fp-prev,.fp-controlArrow.fp-next{
+        display: none;
+    }
     .header{
         padding: 0 8vw;
     }
@@ -566,7 +609,8 @@ a, ul, li {
     .logo-svg-small{
         height: 8vw !important;
     }
-    .slide-img, #section3 .layout1 .slide-img{
+    #section0 .slide-img, #section3 .layout1 .slide-img,
+    #section4 .layout1 .slide-img{
         height: 59vh;
     }
     .slide-title {
@@ -575,11 +619,17 @@ a, ul, li {
     .slide-img-contain > div {
         padding: 10vh 0;
     }
+
+    #section2 .slide-img-contain > div{
+        padding: 9vh 0;
+        box-sizing: padding-box;
+    }
     .header .menu img, #section1 .menu img, #section1mobile .menu img {
         width: 31px;
+        height: 31px;
     }
     .fp-slidesNav.fp-bottom {
-        bottom: 14px;
+        bottom: 3.7vh;
     }
     .fp-slidesNav {
         right: 10px;
@@ -591,17 +641,25 @@ a, ul, li {
         width: 100%;
     }
     .section1-div p, .section1-div-title {
-        width: 80%;
+        width: 60%;
     }
     .section1-div p{
         font-size: 32px;
         line-height: 32px;
     }
     .section1-div-title {
-        line-height: 3.5rem;
+        /*line-height: 3.5rem;*/
+        font-size: 60px;
+        line-height: 60px;
     }
     #section1 .menu, #section1mobile .menu{
         right: 8vw;
+    }
+    .section1-div-mob {
+        height: 70.8vh;
+    }
+    .section1-contain{
+        height: auto;
     }
     .section2ContainPhone{
         display: block;
@@ -618,37 +676,51 @@ a, ul, li {
     #section2 .slide-img-contain .section2-item-phone .event-title,
     #section2 .slide-img-contain .section2-item-phone .event-date{
         font-size: 16px;
-        line-height: 30px;
+        line-height: 16px;
     }
 
+    #section2 .slide-img-contain .section2-item .event-title,
+    #section2 .slide-img-contain .section2-item-phone .event-title{
+        margin: 5px 0;
+    }
+    #section2 .slide-img-contain .section2-item-phone .event-name{
+        margin-bottom: 5px;
+    }
     .slide-title, #section2 .slide-img-contain .section2-item-phone .event-name,
-    #section3 .layout1-title, #section3 .layout2-title{
+    #section3 .layout1-title, #section3 .layout2-title,
+    #section4 .layout1-title, #section4 .layout2-title{
         font-size: 32px;
         line-height: 32px;
     }
 
-    #section3 .layout2{
+    #section3 .layout2,#section4 .layout2{
         flex-direction: column-reverse;
         padding: 0;
         height: 100%;
     }
 
-    #section3 .layout2 .slide-img{
+    #section3 .layout2 .slide-img,#section4 .layout2 .slide-img{
         height: 59vh;
         width: 100%;
     }
 
-    #section3 .layout2-title, #section3 .layout1-title{
+    #section3 .layout2-title, #section3 .layout1-title,
+    #section4 .layout2-title, #section4 .layout1-title{
         padding: 38px 8vw 80px;
         width: 100%;
         box-sizing: border-box;
     }
+    #section3 .layout2-title, #section3 .layout1-title{
+        position: unset;
+        padding: 10px 8vw 0;
+    }
+
     .footer{
         flex-wrap: wrap;
         padding-bottom: 0;
         flex-direction: column;
         height: 402px;
-        margin: 72px 8vw 0;
+        margin: 0 8vw 0;
     }
 
     .footer-column, .footer-column-lg{
@@ -666,11 +738,21 @@ a, ul, li {
     }
 }
 @media screen and (max-width: 896px) and (orientation: landscape) {
+    .header .menu img, #section1 .menu img, #section1mobile .menu img{
+        width: 31px;
+        height: 31px;
+    }
+    .fp-controlArrow.fp-prev,.fp-controlArrow.fp-next{
+        display: none;
+    }
     .fp-slidesNav {
         right: 3.1vw;
     }
     .fp-slidesNav.fp-bottom{
         bottom: 18px;
+    }
+    .menu {
+        transform: translateX(0px)translateY(10px);
     }
     .logo-svg{
         height:9vw;
@@ -683,6 +765,9 @@ a, ul, li {
     }
     .slide-img {
         height: 31.4vw;
+    }
+    #section0 .slide-img{
+        height: 68vh;
     }
     .slide-title{
         font-size: 32px;
@@ -752,30 +837,40 @@ a, ul, li {
         display: flex;
         flex-direction: row-reverse;
     }
-    #section3 .layout2{
+    #section3 .layout2,#section4 .layout2{
         padding: 0;
         height: 100%;
     }
     #section3 .layout1 .slide-img,
-    #section3 .layout2 .slide-img{
+    #section3 .layout2 .slide-img,
+    #section4 .layout1 .slide-img,
+    #section4 .layout2 .slide-img{
         width: 44.4vw;
         height: 31.4vw;
     }
 
-    #section3 .layout1-title{
+    #section3 .layout1-title,#section4 .layout1-title{
         display: flex;
         flex-direction: column-reverse;
     }
-    #section3 .layout2-title {
+    #section3 .layout2-title,#section4 .layout2-title {
         display: flex;
         flex-direction: column-reverse;
         width: auto;
         height: auto;
     }
 
+    #section3 .layout1-title {
+        position: unset;
+    }
+
+    #section4 .fp-scroller{
+        width:100%;
+    }
+
     .footer {
         margin: 72px 3.1vw 0;
-        padding: 40px 0 0;
+        padding: 40px 0 24px;
     }
 
     .footer span, .footer span a{
@@ -813,11 +908,10 @@ a, ul, li {
         line-height: normal;
     }
 }
-
-
-
-
 @media screen and (max-width: 1366px) and (min-width: 1024px) and (orientation: landscape) {
+    .fp-controlArrow.fp-prev,.fp-controlArrow.fp-next{
+        display: none;
+    }
     .slide-img {
         height: 56vw;
     }
@@ -840,8 +934,14 @@ a, ul, li {
         line-height: 6.5rem;
         width: 60%;
     }
-    #section3 .layout1 .slide-img {
+    #section3 .layout1 .slide-img{
         height: 53vw;
+    }
+    #section4 .layout1 .slide-img{
+        height: 28vw;
+    }
+    .footer{
+        padding: 40px 0 100px;
     }
     .footer span, .footer span a {
         font-size: 18px;

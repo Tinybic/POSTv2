@@ -259,7 +259,7 @@
                             <div class="event-img-contain">
                                 <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
                             </div>
-                            <div>
+                            <div style="height: auto;overflow: visible;">
                                 <span class="event-title">EVENT</span>
                                 <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
                                 <span class="event-date">9/25</span>
@@ -389,9 +389,6 @@
                         <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
                         <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                     </div>
-
-                    <!--footer-->
-                    <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
                 <div v-if="!isPhoneLandscape" class="slide slide-img-contain">
                     <!--layout2-->
@@ -399,24 +396,30 @@
                         <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                         <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
                     </div>
-
-                    <!--footer-->
-                    <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
                 <div v-if="!isPhoneLandscape" class="slide slide-img-contain">
                     <!--layout2-->
                     <div class="layout2">
                         <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                         <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="section4">
+            <div class="section3-contain" v-if="!isPhone && !isPhoneLandscape">
+                <div class="slide active slide-img-contain layout1">
+                    <!--layout1-->
+                    <div class="layout1">
+                        <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
+                        <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                     </div>
 
                     <!--footer-->
                     <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
                 </div>
             </div>
-        </div>
-
-        <div v-if="isPhone || isPhoneLandscape" class="section" id="section4">
             <!--footer-->
             <footer-component></footer-component>
         </div>
@@ -547,7 +550,7 @@
             isPhone:false,//is phone device or not
             isPhoneLandscape:false,
             sectionIndex:0,
-            email: ''
+            email: '',
         },
         methods: {
             changeSideBarStatus(param) {
@@ -587,10 +590,6 @@
                 if(!this.isPortrait && height <= 450){
                     this.isPhoneLandscape = true;
                 }
-
-                console.log(this.isPhone);
-                console.log(height);
-                console.log(width);
             } else {
 
             }
@@ -602,6 +601,8 @@
             let myFullpage = new fullpage('#fullpage', {
                 slidesNavigation: true,
                 scrollOverflow: true,
+                autoScrolling:true,
+                fitToSection:true,
                 normalScrollElements: '.sidebar',
                 onLeave: function(origin, destination, direction){
                     _this.isBottom = destination.index === 1;
@@ -609,35 +610,9 @@
                 }
             });
 
-            // let obj = document.getElementById('app');
-            // let downFlag = false;
-            // let position = {
-            //     X: 0,
-            //     Y: 0
-            // };
-            //
-            // obj.onmousedown = function (down) {
-            //     downFlag = true;
-            //     // Record click position
-            //     position.X = down.clientX;
-            //     position.Y = down.clientY;
-            //     console.log(downFlag);
-            // };
-            //
-            // obj.onmouseup = function (up) {
-            //     downFlag = false;
-            //     console.log(downFlag);
-            // };
-            //
-            // obj.onmousemove = function (move) {
-            //     // console.log(downFlag)
-            //     if (downFlag) {
-            //         // if (position.X !== move.clientX || position.Y !== move.clientY) {
-            //         //     console.log("moved");
-            //         //     // Do stuff here
-            //         // }
-            //     }
-            // };
+            window.onresize = function temp() {
+                location.reload();
+            };
         }
     })
 </script>
