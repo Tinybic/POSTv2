@@ -71,26 +71,26 @@ html.fp-enabled,
     transform: translate3d(0,0,0);
 }
 .fp-controlArrow.fp-prev {
-    left: 0;
+    left: 3.5vw;
     /*width: 0;*/
     /*border-width: 38.5px 34px 38.5px 0;*/
     /*border-color: transparent #fff transparent transparent;*/
     background-image: url('../image/icons/arrow_left.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 100px;
     border: none;
 }
 .fp-controlArrow.fp-next {
-    right: 0;
+    right: 3.5vw;
     /*border-width: 38.5px 0 38.5px 34px;*/
     /*border-color: transparent transparent transparent #fff;*/
     background-image: url('../image/icons/arrow_right.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 100px;
     border: none;
 }
 .fp-scrollable {
