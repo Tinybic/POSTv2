@@ -16,8 +16,8 @@
 <body>
 
 <div id="app">
-    <!--header-->
     <div>
+        <!--header-->
         <div class="logo" :class="{layer:isBottom,layer2:!isBottom}">
             <a href="https://posthtx.com" title="POST Houston">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378 114.49" class="logo-svg"
@@ -109,6 +109,8 @@
         <div class="menu" @click="changeSideBarStatus()">
             <img src="image/icons/menu.svg" alt="menu">
         </div>
+
+        <!--main content-->
         <div id="fullpage">
             <!--section0-->
             <div class="section active" id="section0">
@@ -143,15 +145,23 @@
             <div class="section" id="section1mobile" v-if="isMobile">
                 <div class="slide active slide-img-contain">
                     <div class="section1-contain">
-                        <div class="section1-div section1-div-mob" style="background-color: #F54544;">
+                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
+                             style="background-color: #F54544;">
                             <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
                             <div class="section1-div-title">POST MARKET</div>
+                        </div>
+                        <div v-else class="section1-div section1-div-landscape">
+                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
+                                and beyond.
+                            </div>
+                            <div style="background-color: #F54544;" class="section1-div-title">POST MARKET</div>
                         </div>
                     </div>
                 </div>
                 <div class="slide slide-img-contain">
                     <div class="section1-contain">
-                        <div class="section1-div section1-div-mob" style="background-color: #36574d;">
+                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
+                             style="background-color: #36574d;">
                             <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
                                 from
                                 the farm is served in restaurants throughout POST. The first harvest is anticipated in
@@ -159,21 +169,42 @@
                                 summer of 2021.</p>
                             <div class="section1-div-title">FARM</div>
                         </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div class="section1-div section1-div-mob" style="background-color: #c6f5bc;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
+                        <div v-else class="section1-div section1-div-landscape">
+                            <div class="description">Houston's largest green roof will host an innovative, five acre
+                                rooftop farm. Produce
+                                from the farm is served in restaurants throughout POST.
+                            </div>
+                            <div style="background-color: #36574d;" class="section1-div-title">FARM</div>
                         </div>
                     </div>
                 </div>
                 <div class="slide slide-img-contain">
                     <div class="section1-contain">
-                        <div class="section1-div section1-div-mob" style="background-color: #F54544;">
+                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
+                             style="background-color: #c6f5bc;">
                             <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
                             <div class="section1-div-title">POST MARKET</div>
+                        </div>
+                        <div v-else class="section1-div section1-div-landscape">
+                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
+                                and beyond.
+                            </div>
+                            <div style="background-color: #c6f5bc;" class="section1-div-title">POST MARKET</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide-img-contain">
+                    <div class="section1-contain">
+                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
+                             style="background-color: #F54544;">
+                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
+                            <div class="section1-div-title">POST MARKET</div>
+                        </div>
+                        <div v-else class="section1-div section1-div-landscape">
+                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
+                                and beyond.
+                            </div>
+                            <div style="background-color: #F54544;" class="section1-div-title">POST MARKET</div>
                         </div>
                     </div>
                 </div>
@@ -270,7 +301,7 @@
                                 <div class="event-img-contain">
                                     <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
                                 </div>
-                                <div style="height: auto;overflow: visible;">
+                                <div>
                                     <span class="event-title">EVENT</span>
                                     <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
                                     <span class="event-date">9/25</span>
@@ -402,7 +433,7 @@
                             <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
                             <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                         </div>
-                        <footer-component v-bind:is-mobile="isMobile"
+                        <footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"
                                           v-if="!isPhone && !isPhoneLandscape"></footer-component>
                     </div>
                     <div v-if="!isMobile" class="slide slide-img-contain">
@@ -411,7 +442,8 @@
                             <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                             <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
                         </div>
-                        <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
+                        <footer-component v-bind:is-phone-landscape="isPhoneLandscape"
+                                          v-if="!isPhone && !isPhoneLandscape"></footer-component>
                     </div>
                     <div v-if="!isMobile" class="slide slide-img-contain">
                         <!--layout2-->
@@ -419,7 +451,8 @@
                             <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
                             <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
                         </div>
-                        <footer-component v-if="!isPhone && !isPhoneLandscape"></footer-component>
+                        <footer-component v-bind:is-phone-landscape="isPhoneLandscape"
+                                          v-if="!isPhone && !isPhoneLandscape"></footer-component>
                     </div>
                 </div>
                 <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
@@ -427,7 +460,7 @@
             </div>
 
             <div class="section" id="section4">
-                <footer-component v-bind:is-mobile="isMobile"></footer-component>
+                <footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"></footer-component>
             </div>
         </div>
     </div>
@@ -510,17 +543,28 @@
             <div class="footer-column">
                 <span>CONTACT</span>
                 <span class="mt40">401 Franklin St Houston, TX 77201 hello@posthtx.com 713 978 3433</span>
+                <div v-if="isPhoneLandscape" class="mt40">
+                    <span>CONNECT</span>
+                    <span class="mt40">
+                        <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
+                               rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
+                    </span>
+                    <span>
+                        <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
+                               rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
+                    </span>
+                </div>
             </div>
-            <div class="footer-column">
+            <div class="footer-column" v-if="!isPhoneLandscape">
                 <span>CONNECT</span>
                 <span class="mt40">
-                            <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
+                    <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
                                rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
-                        </span>
+                </span>
                 <span>
-                            <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
+                    <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
                                rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
-                        </span>
+                </span>
             </div>
             <div class="footer-column-lg">
                 <span>SUBSCRIBE</span>
@@ -558,7 +602,7 @@
 <script type="text/javascript">
     Vue.component('footer-component', {
         template: '#footerComponent',
-        props: ['isMobile'],
+        props: ['isMobile','isPhoneLandscape'],
         methods: {
             changeSideBarStatus(param) {
                 this.$parent.changeSideBarStatus(param);
@@ -663,6 +707,8 @@
                     })
                         .then(function (res) {
                             if (res.status === 200) {
+                                console.log(res);
+                                sessionStorage.setItem("token", res.data.jwt);
                                 that.isLogin = true;
                             } else {
                                 alert("please input check your user name and password");
@@ -692,8 +738,9 @@
                 if (!this.isPortrait && height <= 450) {
                     this.isPhoneLandscape = true;
                 }
-            } else {
-
+            }
+            if (sessionStorage.getItem("token") != null) {
+                this.isLogin = true;
             }
         },
         mounted: function () {
@@ -705,7 +752,7 @@
                 scrollOverflow: true,
                 autoScrolling: true,
                 fitToSection: true,
-                normalScrollElements: '.sidebar',
+                normalScrollElements: '.sidebar, .description',
                 onLeave: function (origin, destination, direction) {
                     _this.isBottom = destination.index === 1;
                     _this.sectionIndex = destination.index;

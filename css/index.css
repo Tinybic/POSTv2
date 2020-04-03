@@ -757,12 +757,18 @@ a, ul, li {
 }
 
 @media screen and (max-width: 460px) and (orientation: portrait) {
+    .login-contain{
+        width: 100%;
+    }
     .logo {
         left: 8vw;
+        top: 2vh;
     }
 
     .menu {
         right: 8vw;
+        top: 2vh;
+        transform: translateY(8px);
     }
 
     .fp-tableCell {
@@ -782,7 +788,8 @@ a, ul, li {
     }
 
     .logo-svg-small {
-        height: 8vw !important;
+        /*height: 6.5vw !important;*/
+        height: 3vh !important;
     }
 
     #section0 .slide-img, #section3 .layout1 .slide-img,
@@ -792,7 +799,8 @@ a, ul, li {
 
     #section0 .slide-title {
         position: unset;
-        margin-top: 2rem;
+        margin-top: 2vh;
+        padding: 0 8vw;
     }
 
     .slide-title {
@@ -804,17 +812,18 @@ a, ul, li {
     #section1mobile .slide-img-contain > div,
     #section2 .slide-img-contain > div,
     #section3 .slide-img-contain > div {
-        padding: 7.5vh 0;
+        padding: 9.5vh 0;
     }
 
     #section2 .slide-img-contain > div {
-        padding: 7.5vh 0;
+        padding: 9.5vh 0;
         box-sizing: padding-box;
     }
 
     .menu img, #section1 .menu img, #section1mobile .menu img {
-        width: 31px;
-        height: 31px;
+        width: 24px;
+        height: 24px;
+        transform: translateX(-2px) scaleX(1.4);
     }
 
     .fp-slidesNav.fp-bottom {
@@ -822,7 +831,7 @@ a, ul, li {
     }
 
     .fp-slidesNav {
-        right: 10px;
+        right: 7vw;
     }
 
     .sidebar-space {
@@ -855,7 +864,7 @@ a, ul, li {
     }
 
     .section1-div-mob {
-        height: 70.8vh;
+        height: 68vh;
     }
 
     .section1-contain {
@@ -884,11 +893,11 @@ a, ul, li {
 
     #section2 .slide-img-contain .section2-item .event-title,
     #section2 .slide-img-contain .section2-item-phone .event-title {
-        margin: 2vh 0;
+        margin: 2vh 0 1vh;
     }
 
     #section2 .slide-img-contain .section2-item-phone .event-name {
-        margin-bottom: 2vh;
+        margin-bottom: 1vh;
     }
 
     .slide-title, #section2 .slide-img-contain .section2-item-phone .event-name,
@@ -922,7 +931,8 @@ a, ul, li {
 
     #section3 .layout2-title, #section3 .layout1-title {
         position: unset;
-        padding: 10px 8vw 0;
+        padding: 0 8vw;
+        margin-top: 2vh;
     }
 
     .footer {
@@ -930,7 +940,7 @@ a, ul, li {
         padding-bottom: 0;
         flex-direction: column;
         height: 402px;
-        margin: 7.5vh 8vw 0;
+        margin: 9.5vh 8vw 0;
         border-top: 2px solid #fff;
     }
 
@@ -944,6 +954,10 @@ a, ul, li {
         line-height: 16px;
     }
 
+    .footerSignup img{
+        transform: scaleY(0.7) scaleX(1.1);
+    }
+
     .site-map {
         transform: translateY(-75px);
     }
@@ -951,12 +965,25 @@ a, ul, li {
     .mail-contain {
         width: 100%;
     }
+    .close-side {
+        margin: 7vw;
+        width: 47px;
+        height: 47px;
+    }
 }
 
 @media screen and (max-width: 960px) and (orientation: landscape) {
+    .section0-contain, .section1-contain, .section2-contain, .section3-contain {
+        padding: 0 3.7vw;
+    }
+    .logo{
+        left: 3.7vw;
+    }
     .menu img, #section1 .menu img, #section1mobile .menu img {
         width: 31px;
         height: 31px;
+        right: 3.7vw;
+        transform: scaleX(1.4) translateX(-7px);
     }
 
     .fp-controlArrow.fp-prev, .fp-controlArrow.fp-next {
@@ -964,7 +991,7 @@ a, ul, li {
     }
 
     .fp-slidesNav {
-        right: 3.1vw;
+        right: 3.7vw;
     }
 
     .fp-tableCell {
@@ -1029,6 +1056,34 @@ a, ul, li {
         /*padding: 0;*/
     }
 
+    .section1-div-landscape{
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 0;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .section1-div-landscape div{
+        width: 48%;
+        height: 100%;
+    }
+
+    .section1-div-landscape .description{
+        font-size: 32px;
+        line-height: 32px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
+    .section1-div-landscape .section1-div-title{
+        line-height: 7rem;
+        padding: 7vh 3.7vw;
+        box-sizing: border-box;
+    }
+
     .section1-div p {
         position: absolute;
         display: flex;
@@ -1054,6 +1109,8 @@ a, ul, li {
     .section2-item-phone {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: flex-end;
+        width: 100%;
         /*height: 66vh;*/
     }
 
@@ -1063,8 +1120,9 @@ a, ul, li {
     }
 
     .section2-item-phone > div:nth-child(2) {
-        width: 37vw;
-        padding-right: 13vw;
+        width: 48%;
+        margin-right: 4%;
+        /*padding-right: 13vw;*/
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -1088,6 +1146,7 @@ a, ul, li {
 
     #section3 .layout1, #section3 .layout2 {
         margin-top: 0;
+        justify-content: flex-end;
     }
 
     #section3 .layout2, #section4 .layout2 {
@@ -1106,6 +1165,8 @@ a, ul, li {
     #section3 .layout1-title, #section4 .layout1-title {
         display: flex;
         flex-direction: column-reverse;
+        width: 48%;
+        margin-right: 4%;
     }
 
     #section3 .layout2-title, #section4 .layout2-title {
@@ -1124,8 +1185,9 @@ a, ul, li {
     }
 
     .footer {
-        margin: 72px 3.1vw 0;
+        margin: 72px 3.7vw 0;
         padding: 40px 0 24px;
+        border-top: solid 2px #fff;
     }
 
     .footer span, .footer span a {
@@ -1138,21 +1200,27 @@ a, ul, li {
     }
 
     .close-side {
-        margin: 0 8px;
+        /*margin: 0 8px;*/
+        margin:0 3.7vw 0 0;
         width: 37px;
         height: 37px;
         transform: translateY(10px);
     }
 
+    .sidebar {
+        height: auto;
+        width: 50vw;
+    }
+
     .nav-title {
-        font-size: 18px;
-        line-height: 18px;
+        font-size: 32px;
+        line-height: 32px;
     }
 
     .nav-list li {
-        padding: 5px 0 5px 88px;
-        font-size: 18px;
-        line-height: 18px;
+        padding: 0 90px;
+        font-size: 32px;
+        line-height: 32px;
     }
 
     .nav-item:nth-child(3), .nav-item:nth-child(4) {
@@ -1169,6 +1237,9 @@ a, ul, li {
         display: block;
         margin: 56px auto 0;
         line-height: normal;
+    }
+    .footerSignup img {
+        transform: scaleY(0.7) scaleX(1.1);
     }
 }
 
