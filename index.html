@@ -776,7 +776,9 @@
                 },
             });
             window.onresize = function temp() {
-                location.reload();
+                if(_this.isLogin){
+                    location.reload();
+                }
             };
         }
     })
