@@ -12,6 +12,8 @@
     <script src="js/scrolloverflow.js"></script>
     <script src="js/axios.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/fullpage.js"></script>
+
 </head>
 <body>
 
@@ -115,27 +117,25 @@
             <!--section0-->
             <div class="section active" id="section0">
                 <div class="section0-contain">
-                    <div class="slide active slide-img-contain">
-                        <img class="slide-img" src="image/demoimg/image_03.jpg" alt="" @mouseover="showArrow()"
+                    <div class="slide slide-img-contain" v-for="(item, index) in firstSection" :class="{active:index===0}">
+                        <img class="slide-img" :src="item.Image.url" alt="" @mouseover="showArrow()"
                              @mouseout="hideArrow()">
-                        <p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read
-                            the
-                            latest news.</p>
+                        <p class="slide-title">{{item.Caption}}</p>
                     </div>
-                    <div class="slide slide-img-contain">
-                        <img class="slide-img" src="image/demoimg/image_04.jpg" alt="" @mouseover="showArrow()"
-                             @mouseout="hideArrow()">
-                        <p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read
-                            the
-                            latest news.</p>
-                    </div>
-                    <div class="slide slide-img-contain">
-                        <img class="slide-img" src="image/demoimg/image_05.jpg" alt="" @mouseover="showArrow()"
-                             @mouseout="hideArrow()">
-                        <p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read
-                            the
-                            latest news.</p>
-                    </div>
+                    <!--<div class="slide slide-img-contain">-->
+                        <!--<img class="slide-img" src="image/demoimg/image_04.jpg" alt="" @mouseover="showArrow()"-->
+                             <!--@mouseout="hideArrow()">-->
+                        <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
+                            <!--the-->
+                            <!--latest news.</p>-->
+                    <!--</div>-->
+                    <!--<div class="slide slide-img-contain">-->
+                        <!--<img class="slide-img" src="image/demoimg/image_05.jpg" alt="" @mouseover="showArrow()"-->
+                             <!--@mouseout="hideArrow()">-->
+                        <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
+                            <!--the-->
+                            <!--latest news.</p>-->
+                    <!--</div>-->
                     <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
                     <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
                 </div>
@@ -598,8 +598,9 @@
 </div>
 
 
-<script src="js/fullpage.js"></script>
 <script type="text/javascript">
+    const URL = 'https://admin.posthtx.com';
+
     Vue.component('footer-component', {
         template: '#footerComponent',
         props: ['isMobile','isPhoneLandscape'],
@@ -623,11 +624,12 @@
             isPhoneLandscape: false,
             userName: '',
             password: '',
-            isLogin: false,
+            isLogin: true,
             sectionIndex: 0,
             email: '',
             pres: null,
-            nexts: null
+            nexts: null,
+            firstSection:''
         },
         methods: {
             showArrow() {
@@ -697,10 +699,35 @@
                     console.log('email is invalid');
                 }
             },
+            getFirstSection(){
+                let _this = this;
+                axios.get(URL+'/first-photo-galleries')
+                    .then(function (res) {
+                        console.log(res);
+                        if(res.status===200){
+                            if(res.data.length>0){
+                                res.data.forEach(function (e) {
+                                    e.Image.url = 'https://admin.posthtx.com/'+ e.Image.url;
+                                    console.log(e.Image.url);
+                                })
+                            }
+                            _this.firstSection =  res.data;
+                        }else{
+                            console.log('ERROR'+res);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+                /*/second-contents
+/third-infos
+/fourth-photo-galleries*/
+            },
             login() {
                 let that = this;
                 if (this.userName != '' && this.password != '') {
-                    axios.post('https://admin.posthtx.com/admin/auth/local', {
+                    axios.post(URL+'/admin/auth/local', {
                         identifier: that.userName,//'posthtx',
                         password: that.password,//'JMAt2Oiv@%8lPX&B',
                         rememberMe: true
@@ -744,40 +771,49 @@
             }
         },
         mounted: function () {
+            this.getFirstSection();
             let _this = this;
 
             //initial full page object
-            let myFullpage = new fullpage('#fullpage', {
-                slidesNavigation: true,
-                scrollOverflow: true,
-                autoScrolling: true,
-                fitToSection: true,
-                normalScrollElements: '.sidebar, .description',
-                onLeave: function (origin, destination, direction) {
-                    _this.isBottom = destination.index === 1;
-                    _this.sectionIndex = destination.index;
-
-                    if (destination.index === 3) {
-                        setTimeout(function () {
-                            $(window).bind('mousewheel', function (e) {
-                                $('.fp-slidesNav').hide();
-                                // if(e.originalEvent.wheelDelta /120 > 0) {
-                                //     console.log('scrolling up');
-                                // }
-                                // else{
-                                //     console.log('scrolling down');
-                                // }
-                            });
-                        }, 500)
-                    } else {
-                        $(window).unbind('mousewheel');
-                        $('.fp-slidesNav').show();
-                    }
-                },
-            });
             window.onresize = function temp() {
-                location.reload();
+                if(_this.isLogin){
+                    location.reload();
+                }            
             };
+        },
+        beforeUpdate: function () {
+            let _this = this;
+
+            setTimeout(function () {
+                let myFullpage = new fullpage('#fullpage', {
+                    slidesNavigation: true,
+                    scrollOverflow: true,
+                    autoScrolling: true,
+                    fitToSection: true,
+                    normalScrollElements: '.sidebar, .description',
+                    onLeave: function (origin, destination, direction) {
+                        _this.isBottom = destination.index === 1;
+                        _this.sectionIndex = destination.index;
+
+                        if (destination.index === 3) {
+                            setTimeout(function () {
+                                $(window).bind('mousewheel', function (e) {
+                                    $('.fp-slidesNav').hide();
+                                    // if(e.originalEvent.wheelDelta /120 > 0) {
+                                    //     console.log('scrolling up');
+                                    // }
+                                    // else{
+                                    //     console.log('scrolling down');
+                                    // }
+                                });
+                            }, 500)
+                        } else {
+                            $(window).unbind('mousewheel');
+                            $('.fp-slidesNav').show();
+                        }
+                    },
+                });
+            },1)
         }
     })
 </script>
