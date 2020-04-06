@@ -117,24 +117,25 @@
             <!--section0-->
             <div class="section active" id="section0">
                 <div class="section0-contain">
-                    <div class="slide slide-img-contain" v-for="(item, index) in firstSection" :class="{active:index===0}">
+                    <div class="slide slide-img-contain" v-for="(item, index) in firstSection"
+                         :class="{active:index===0}">
                         <img class="slide-img" :src="item.Image.url" alt="" @mouseover="showArrow()"
                              @mouseout="hideArrow()">
-                        <p class="slide-title">{{item.Caption}}</p>
+                        <a :href="item.Hyperlink" target="_blank"><p class="slide-title">{{item.Caption}}</p></a>
                     </div>
                     <!--<div class="slide slide-img-contain">-->
-                        <!--<img class="slide-img" src="image/demoimg/image_04.jpg" alt="" @mouseover="showArrow()"-->
-                             <!--@mouseout="hideArrow()">-->
-                        <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
-                            <!--the-->
-                            <!--latest news.</p>-->
+                    <!--<img class="slide-img" src="image/demoimg/image_04.jpg" alt="" @mouseover="showArrow()"-->
+                    <!--@mouseout="hideArrow()">-->
+                    <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
+                    <!--the-->
+                    <!--latest news.</p>-->
                     <!--</div>-->
                     <!--<div class="slide slide-img-contain">-->
-                        <!--<img class="slide-img" src="image/demoimg/image_05.jpg" alt="" @mouseover="showArrow()"-->
-                             <!--@mouseout="hideArrow()">-->
-                        <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
-                            <!--the-->
-                            <!--latest news.</p>-->
+                    <!--<img class="slide-img" src="image/demoimg/image_05.jpg" alt="" @mouseover="showArrow()"-->
+                    <!--@mouseout="hideArrow()">-->
+                    <!--<p class="slide-title">Downtown Houston's hub for culture, food, shopping, and recreation. Read-->
+                    <!--the-->
+                    <!--latest news.</p>-->
                     <!--</div>-->
                     <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
                     <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
@@ -143,283 +144,278 @@
 
             <!--section1 mobile-->
             <div class="section" id="section1mobile" v-if="isMobile">
-                <div class="slide active slide-img-contain">
+                <div class="slide slide-img-contain" v-for="(item, index) in secondSection" :class="{active:index===0}">
                     <div class="section1-contain">
                         <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
-                             style="background-color: #F54544;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
+                             :style="{background:item.Background}">
+                            <a :href="item.Hyperlink" target="_blank"><p>{{item.Description}}</p></a>
+                            <a :href="item.Hyperlink" target="_blank"><div class="section1-div-title">{{item.Title}}</div></a>
                         </div>
                         <div v-else class="section1-div section1-div-landscape">
-                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
-                                and beyond.
-                            </div>
-                            <div style="background-color: #F54544;" class="section1-div-title">POST MARKET</div>
+                            <a :href="item.Hyperlink" target="_blank"><div class="description">{{item.Description}}</div></a>
+                            <a :href="item.Hyperlink" target="_blank"><div :style="{background:item.Background}" class="section1-div-title">{{item.Title}}</div></a>
                         </div>
                     </div>
                 </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
-                             style="background-color: #36574d;">
-                            <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
-                                from
-                                the farm is served in restaurants throughout POST. The first harvest is anticipated in
-                                the
-                                summer of 2021.</p>
-                            <div class="section1-div-title">FARM</div>
-                        </div>
-                        <div v-else class="section1-div section1-div-landscape">
-                            <div class="description">Houston's largest green roof will host an innovative, five acre
-                                rooftop farm. Produce
-                                from the farm is served in restaurants throughout POST.
-                            </div>
-                            <div style="background-color: #36574d;" class="section1-div-title">FARM</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
-                             style="background-color: #c6f5bc;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
-                        </div>
-                        <div v-else class="section1-div section1-div-landscape">
-                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
-                                and beyond.
-                            </div>
-                            <div style="background-color: #c6f5bc;" class="section1-div-title">POST MARKET</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"
-                             style="background-color: #F54544;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
-                        </div>
-                        <div v-else class="section1-div section1-div-landscape">
-                            <div class="description">Featuring food, drinks, and groceries from vendors local to Houston
-                                and beyond.
-                            </div>
-                            <div style="background-color: #F54544;" class="section1-div-title">POST MARKET</div>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"-->
+                <!--style="background-color: #36574d;">-->
+                <!--<p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce-->
+                <!--from-->
+                <!--the farm is served in restaurants throughout POST. The first harvest is anticipated in-->
+                <!--the-->
+                <!--summer of 2021.</p>-->
+                <!--<div class="section1-div-title">FARM</div>-->
+                <!--</div>-->
+                <!--<div v-else class="section1-div section1-div-landscape">-->
+                <!--<div class="description">Houston's largest green roof will host an innovative, five acre-->
+                <!--rooftop farm. Produce-->
+                <!--from the farm is served in restaurants throughout POST.-->
+                <!--</div>-->
+                <!--<div style="background-color: #36574d;" class="section1-div-title">FARM</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"-->
+                <!--style="background-color: #c6f5bc;">-->
+                <!--<p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>-->
+                <!--<div class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--<div v-else class="section1-div section1-div-landscape">-->
+                <!--<div class="description">Featuring food, drinks, and groceries from vendors local to Houston-->
+                <!--and beyond.-->
+                <!--</div>-->
+                <!--<div style="background-color: #c6f5bc;" class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div v-if="!isPhoneLandscape" class="section1-div section1-div-mob"-->
+                <!--style="background-color: #F54544;">-->
+                <!--<p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>-->
+                <!--<div class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--<div v-else class="section1-div section1-div-landscape">-->
+                <!--<div class="description">Featuring food, drinks, and groceries from vendors local to Houston-->
+                <!--and beyond.-->
+                <!--</div>-->
+                <!--<div style="background-color: #F54544;" class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
             </div>
 
             <!--section1 web-->
             <div class="section" id="section1" v-else>
-                <div class="slide active slide-img-contain">
+                <div class="slide slide-img-contain" v-for="(item, index) in secondSection" :class="{active:index===0}">
                     <div class="section1-contain">
                         <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #F54544;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
+                             v-for="(subItem, index) in item"
+                             :style="{background:subItem.Background}">
+                            <a :href="subItem.Hyperlink" target="_blank"><p>{{subItem.Description}}</p></a>
+                            <a :href="subItem.Hyperlink" target="_blank"><div class="section1-div-title">{{subItem.Title}}</div></a>
                         </div>
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #A47009;">
-                            <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
-                                from
-                                the
-                                farm is served in restaurants throughout POST. The first harvest is anticipated in the
-                                summer
-                                of 2021.</p>
-                            <div class="section1-div-title">FARM</div>
-                        </div>
+                        <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                        <!--:style="{background:item.Background}">-->
+                        <!--<p>{{item.Description}}</p>-->
+                        <!--<div class="section1-div-title">{{item.Title}}</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #1e1f1f;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
-                        </div>
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #36574d;">
-                            <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
-                                from
-                                the
-                                farm is served in restaurants throughout POST. The first harvest is anticipated in the
-                                summer
-                                of 2021.</p>
-                            <div class="section1-div-title">FARM</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #c6f5bc;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
-                        </div>
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #305053;">
-                            <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
-                                from
-                                the
-                                farm is served in restaurants throughout POST. The first harvest is anticipated in the
-                                summer
-                                of 2021.</p>
-                            <div class="section1-div-title">FARM</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section1-contain">
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #F54544;">
-                            <p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>
-                            <div class="section1-div-title">POST MARKET</div>
-                        </div>
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"
-                             style="background-color: #A47009;">
-                            <p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce
-                                from
-                                the
-                                farm is served in restaurants throughout POST. The first harvest is anticipated in the
-                                summer
-                                of 2021.</p>
-                            <div class="section1-div-title">FARM</div>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #1e1f1f;">-->
+                <!--<p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>-->
+                <!--<div class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #36574d;">-->
+                <!--<p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce-->
+                <!--from-->
+                <!--the-->
+                <!--farm is served in restaurants throughout POST. The first harvest is anticipated in the-->
+                <!--summer-->
+                <!--of 2021.</p>-->
+                <!--<div class="section1-div-title">FARM</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #c6f5bc;">-->
+                <!--<p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>-->
+                <!--<div class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #305053;">-->
+                <!--<p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce-->
+                <!--from-->
+                <!--the-->
+                <!--farm is served in restaurants throughout POST. The first harvest is anticipated in the-->
+                <!--summer-->
+                <!--of 2021.</p>-->
+                <!--<div class="section1-div-title">FARM</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section1-contain">-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #F54544;">-->
+                <!--<p>Featuring food, drinks, and groceries from vendors local to Houston and beyond.</p>-->
+                <!--<div class="section1-div-title">POST MARKET</div>-->
+                <!--</div>-->
+                <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="section1-div"-->
+                <!--style="background-color: #A47009;">-->
+                <!--<p>Houston's largest green roof will host an innovative, five acre rooftop farm. Produce-->
+                <!--from-->
+                <!--the-->
+                <!--farm is served in restaurants throughout POST. The first harvest is anticipated in the-->
+                <!--summer-->
+                <!--of 2021.</p>-->
+                <!--<div class="section1-div-title">FARM</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
                 <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
                 <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
             </div>
 
             <!--section2-->
             <div class="section" id="section2">
-                <div class="slide active slide-img-contain">
+                <div class="slide slide-img-contain" v-for="(item, index) in thirdSection" :class="{active:index===0}">
                     <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
                         <div v-if="isPhone || isPhoneLandscape">
                             <div class="section2-item-phone">
                                 <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
+                                    <a :href="item.Hyperlink" target="_blank"><img class="event-img" :src="item.Image.url" alt="event"></a>
                                 </div>
                                 <div>
-                                    <span class="event-title">EVENT</span>
-                                    <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
-                                    <span class="event-date">9/25</span>
+                                    <span class="event-title">{{item.Category}}</span>
+                                    <a :href="item.Hyperlink" target="_blank"><span class="event-name">{{item.Title}}</span></a>
+                                    <span class="event-date">{{item.Date}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()">
-                            <div class="section2-item">
+                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()"
+                             v-for="(item, index) in thirdSection">
+                            <div v-for="subItem in item" class="section2-item">
                                 <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
+                                    <a :href="subItem.Hyperlink" target="_blank"><img class="event-img" :src="subItem.Image.url" alt="event"></a>
                                 </div>
-                                <span class="event-title">EVENT</span>
-                                <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
-                                <span class="event-date">9/25</span>
+                                <span class="event-title">{{subItem.Category}}</span>
+                                <a :href="subItem.Hyperlink" target="_blank"><span class="event-name">{{subItem.Title}}</span></a>
+                                <span class="event-date">{{subItem.Date}}</span>
                             </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo.png" alt="event">
-                                </div>
-                                <span class="event-title">NEWS</span>
-                                <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
-                                <span class="event-date">9/24</span>
-                            </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo2.png" alt="event">
-                                </div>
-                                <span class="event-title">FOOD</span>
-                                <span class="event-name">El Tiempo releases summer drink menu</span>
-                                <span class="event-date">9/23</span>
-                            </div>
+                            <!--<div class="section2-item">-->
+                            <!--<div class="news-img-contain">-->
+                            <!--<img class="news-img" src="image/demoimg/news_demo.png" alt="event">-->
+                            <!--</div>-->
+                            <!--<span class="event-title">NEWS</span>-->
+                            <!--<span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>-->
+                            <!--<span class="event-date">9/24</span>-->
+                            <!--</div>-->
+                            <!--<div class="section2-item">-->
+                            <!--<div class="news-img-contain">-->
+                            <!--<img class="news-img" src="image/demoimg/news_demo2.png" alt="event">-->
+                            <!--</div>-->
+                            <!--<span class="event-title">FOOD</span>-->
+                            <!--<span class="event-name">El Tiempo releases summer drink menu</span>-->
+                            <!--<span class="event-date">9/23</span>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
-                <div class="slide slide-img-contain">
-                    <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
-                        <div v-if="isPhone || isPhoneLandscape">
-                            <div class="section2-item-phone">
-                                <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/news_demo.png" alt="event">
-                                </div>
-                                <div>
-                                    <span class="event-title">NEWS</span>
-                                    <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
-                                    <span class="event-date">9/24</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()">
-                            <div class="section2-item">
-                                <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
-                                </div>
-                                <span class="event-title">EVENT</span>
-                                <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
-                                <span class="event-date">9/25</span>
-                            </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo.png" alt="event">
-                                </div>
-                                <span class="event-title">NEWS</span>
-                                <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
-                                <span class="event-date">9/24</span>
-                            </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo2.png" alt="event">
-                                </div>
-                                <span class="event-title">FOOD</span>
-                                <span class="event-name">El Tiempo releases summer drink menu</span>
-                                <span class="event-date">9/23</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide slide-img-contain">
-                    <div class="section2-contain" :class="{section2ContainPhone:isPhone}">
-                        <div v-if="isPhone || isPhoneLandscape">
-                            <div class="section2-item-phone">
-                                <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/news_demo2.png" alt="event">
-                                </div>
-                                <div>
-                                    <span class="event-title">FOOD</span>
-                                    <span class="event-name">El Tiempo releases summer drink menu</span>
-                                    <span class="event-date">9/23</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()">
-                            <div class="section2-item">
-                                <div class="event-img-contain">
-                                    <img class="event-img" src="image/demoimg/event_demo.png" alt="event">
-                                </div>
-                                <span class="event-title">EVENT</span>
-                                <span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>
-                                <span class="event-date">9/25</span>
-                            </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo.png" alt="event">
-                                </div>
-                                <span class="event-title">NEWS</span>
-                                <span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>
-                                <span class="event-date">9/24</span>
-                            </div>
-                            <div class="section2-item">
-                                <div class="news-img-contain">
-                                    <img class="news-img" src="image/demoimg/news_demo2.png" alt="event">
-                                </div>
-                                <span class="event-title">FOOD</span>
-                                <span class="event-name">El Tiempo releases summer drink menu</span>
-                                <span class="event-date">9/23</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section2-contain" :class="{section2ContainPhone:isPhone}">-->
+                <!--<div v-if="isPhone || isPhoneLandscape">-->
+                <!--<div class="section2-item-phone">-->
+                <!--<div class="event-img-contain">-->
+                <!--<img class="event-img" src="image/demoimg/news_demo.png" alt="event">-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<span class="event-title">NEWS</span>-->
+                <!--<span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>-->
+                <!--<span class="event-date">9/24</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div v-else @mouseover="showArrow()" @mouseout="hideArrow()">-->
+                <!--<div class="section2-item">-->
+                <!--<div class="event-img-contain">-->
+                <!--<img class="event-img" src="image/demoimg/event_demo.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">EVENT</span>-->
+                <!--<span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>-->
+                <!--<span class="event-date">9/25</span>-->
+                <!--</div>-->
+                <!--<div class="section2-item">-->
+                <!--<div class="news-img-contain">-->
+                <!--<img class="news-img" src="image/demoimg/news_demo.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">NEWS</span>-->
+                <!--<span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>-->
+                <!--<span class="event-date">9/24</span>-->
+                <!--</div>-->
+                <!--<div class="section2-item">-->
+                <!--<div class="news-img-contain">-->
+                <!--<img class="news-img" src="image/demoimg/news_demo2.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">FOOD</span>-->
+                <!--<span class="event-name">El Tiempo releases summer drink menu</span>-->
+                <!--<span class="event-date">9/23</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="slide slide-img-contain">-->
+                <!--<div class="section2-contain" :class="{section2ContainPhone:isPhone}">-->
+                <!--<div v-if="isPhone || isPhoneLandscape">-->
+                <!--<div class="section2-item-phone">-->
+                <!--<div class="event-img-contain">-->
+                <!--<img class="event-img" src="image/demoimg/news_demo2.png" alt="event">-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<span class="event-title">FOOD</span>-->
+                <!--<span class="event-name">El Tiempo releases summer drink menu</span>-->
+                <!--<span class="event-date">9/23</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div v-else @mouseover="showArrow()" @mouseout="hideArrow()">-->
+                <!--<div class="section2-item">-->
+                <!--<div class="event-img-contain">-->
+                <!--<img class="event-img" src="image/demoimg/event_demo.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">EVENT</span>-->
+                <!--<span class="event-name">Nike Gyakusou FW20 in the X Atrium</span>-->
+                <!--<span class="event-date">9/25</span>-->
+                <!--</div>-->
+                <!--<div class="section2-item">-->
+                <!--<div class="news-img-contain">-->
+                <!--<img class="news-img" src="image/demoimg/news_demo.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">NEWS</span>-->
+                <!--<span class="event-name">LA favorites Eggslut, Local Pho to join Market vendors</span>-->
+                <!--<span class="event-date">9/24</span>-->
+                <!--</div>-->
+                <!--<div class="section2-item">-->
+                <!--<div class="news-img-contain">-->
+                <!--<img class="news-img" src="image/demoimg/news_demo2.png" alt="event">-->
+                <!--</div>-->
+                <!--<span class="event-title">FOOD</span>-->
+                <!--<span class="event-name">El Tiempo releases summer drink menu</span>-->
+                <!--<span class="event-date">9/23</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
                 <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
                 <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
             </div>
@@ -427,40 +423,48 @@
             <!--section3-->
             <div class="section" id="section3">
                 <div class="section3-contain">
-                    <div class="slide active slide-img-contain">
+                    <div v-if="isMobile" class="slide slide-img-contain"  v-for="(item, index) in fourthSection">
                         <!--layout1-->
                         <div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout1">
-                            <img class="slide-img" src="image/demoimg/image_03.jpg" alt="">
-                            <p class="layout1-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
+                            <img class="slide-img" :src="item.Image.url" alt="">
+                            <p class="layout1-title">{{item.Caption}}</p>
                         </div>
-                        <footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"
-                                          v-if="!isPhone && !isPhoneLandscape"></footer-component>
+                        <!--<footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"-->
+                                          <!--v-if="!isPhone && !isPhoneLandscape"></footer-component>-->
                     </div>
-                    <div v-if="!isMobile" class="slide slide-img-contain">
+                    <div v-if="!isMobile" class="slide slide-img-contain" v-for="(item, index) in fourthSection">
+                        <!--layout1-->
+                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout1"
+                             v-if="item.Layout==='up_down'">
+                            <img class="slide-img" :src="item.Image.url" alt="">
+                            <p class="layout1-title">{{item.Caption}}</p>
+                        </div>
                         <!--layout2-->
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout2">
-                            <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
-                            <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
+                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout2"
+                             v-if="item.Layout==='left_right'">
+                            <p class="layout2-title">{{item.Caption}}</p>
+                            <img class="slide-img" :src="item.Image.url" alt="">
                         </div>
                         <footer-component v-bind:is-phone-landscape="isPhoneLandscape"
                                           v-if="!isPhone && !isPhoneLandscape"></footer-component>
                     </div>
-                    <div v-if="!isMobile" class="slide slide-img-contain">
-                        <!--layout2-->
-                        <div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout2">
-                            <p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>
-                            <img class="slide-img" src="image/demoimg/image_04.jpg" alt="">
-                        </div>
-                        <footer-component v-bind:is-phone-landscape="isPhoneLandscape"
-                                          v-if="!isPhone && !isPhoneLandscape"></footer-component>
-                    </div>
+                    <!--<div v-if="!isMobile" class="slide slide-img-contain">-->
+                    <!--&lt;!&ndash;layout2&ndash;&gt;-->
+                    <!--<div @mouseover="showArrow()" @mouseout="hideArrow()" class="layout2">-->
+                    <!--<p class="layout2-title">Adaptive reuse of the historic Barbara Jordan Post Office.</p>-->
+                    <!--<img class="slide-img" src="image/demoimg/image_04.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<footer-component v-bind:is-phone-landscape="isPhoneLandscape"-->
+                    <!--v-if="!isPhone && !isPhoneLandscape"></footer-component>-->
+                    <!--</div>-->
                 </div>
                 <div class="pre" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(0)"></div>
                 <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
             </div>
 
             <div class="section" id="section4">
-                <footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"></footer-component>
+                <footer-component v-bind:is-mobile="isMobile"
+                                  v-bind:is-phone-landscape="isPhoneLandscape"></footer-component>
             </div>
         </div>
     </div>
@@ -547,11 +551,11 @@
                     <span>CONNECT</span>
                     <span class="mt40">
                         <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
-                               rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
+                           rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
                     </span>
                     <span>
                         <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
-                               rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
+                           rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
                     </span>
                 </div>
             </div>
@@ -559,11 +563,11 @@
                 <span>CONNECT</span>
                 <span class="mt40">
                     <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
-                               rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
+                       rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
                 </span>
                 <span>
                     <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
-                               rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
+                       rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
                 </span>
             </div>
             <div class="footer-column-lg">
@@ -603,7 +607,7 @@
 
     Vue.component('footer-component', {
         template: '#footerComponent',
-        props: ['isMobile','isPhoneLandscape'],
+        props: ['isMobile', 'isPhoneLandscape'],
         methods: {
             changeSideBarStatus(param) {
                 this.$parent.changeSideBarStatus(param);
@@ -629,7 +633,10 @@
             email: '',
             pres: null,
             nexts: null,
-            firstSection:''
+            firstSection: '',
+            secondSection: '',
+            thirdSection: '',
+            fourthSection: ''
         },
         methods: {
             showArrow() {
@@ -699,35 +706,99 @@
                     console.log('email is invalid');
                 }
             },
-            getFirstSection(){
+            getFirstSection() {
                 let _this = this;
-                axios.get(URL+'/first-photo-galleries')
+                axios.get(URL + '/first-photo-galleries')
                     .then(function (res) {
-                        console.log(res);
-                        if(res.status===200){
-                            if(res.data.length>0){
+                        if (res.status === 200) {
+                            if (res.data.length > 0) {
                                 res.data.forEach(function (e) {
-                                    e.Image.url = 'https://admin.posthtx.com/'+ e.Image.url;
-                                    console.log(e.Image.url);
+                                    e.Image.url = 'https://admin.posthtx.com/' + e.Image.url;
                                 })
                             }
-                            _this.firstSection =  res.data;
-                        }else{
-                            console.log('ERROR'+res);
+                            _this.firstSection = res.data;
+                        } else {
+                            console.log('ERROR' + res);
                         }
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            getSecondSection() {
+                let _this = this;
+                axios.get(URL + '/second-contents')
+                    .then(function (res) {
+                        if (res.status === 200) {
+                            let tempList = [];
+                            if (!_this.isMobile && res.data.length > 0) {
+                                for (let i = 0; i < res.data.length; i += 2) {
+                                    tempList.push(res.data.slice(i, i + 2));
+                                }
+                                _this.secondSection = tempList;
+                            } else {
+                                _this.secondSection = res.data;
+                            }
+                        } else {
+                            console.log('ERROR' + res);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            getThirdSection() {
+                let _this = this;
+                axios.get(URL + '/third-infos')
+                    .then(function (res) {
+                        if (res.status === 200) {
+                            if (res.data.length > 0) {
+                                res.data.forEach(function (e) {
+                                    e.Image.url = 'https://admin.posthtx.com/' + e.Image.url;
+                                })
+                            }
 
-                /*/second-contents
-/third-infos
-/fourth-photo-galleries*/
+                            let tempList = [];
+                            if ((_this.isPhone || _this.isPhoneLandscape) && res.data.length > 0) {
+                                _this.thirdSection = res.data;
+                            } else {
+                                for (let i = 0; i < res.data.length; i += 3) {
+                                    tempList.push(res.data.slice(i, i + 3));
+                                }
+                                _this.thirdSection = tempList;
+                            }
+                        } else {
+                            console.log('ERROR' + res);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            getFourthSection() {
+                let _this = this;
+                axios.get(URL + '/fourth-photo-galleries')
+                    .then(function (res) {
+                        if (res.status === 200) {
+                            console.log(res);
+                            if(res.data.length>0){
+                                res.data.forEach(function (e) {
+                                    e.Image.url = 'https://admin.posthtx.com/'+ e.Image.url;
+                                })
+                            }
+                            _this.fourthSection = res.data;
+                        } else {
+                            console.log('ERROR' + res);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             login() {
                 let that = this;
                 if (this.userName != '' && this.password != '') {
-                    axios.post(URL+'/admin/auth/local', {
+                    axios.post(URL + '/admin/auth/local', {
                         identifier: that.userName,//'posthtx',
                         password: that.password,//'JMAt2Oiv@%8lPX&B',
                         rememberMe: true
@@ -750,6 +821,7 @@
                 }
             }
         },
+
         beforeMount: function () {
             if (this._isMobile()) {
                 this.isMobile = true;
@@ -771,12 +843,15 @@
             }
         },
         mounted: function () {
-            this.getFirstSection();
             let _this = this;
+            this.getFirstSection();
+            this.getSecondSection();
+            this.getThirdSection();
+            this.getFourthSection();
 
             //initial full page object
             window.onresize = function temp() {
-                if(_this.isLogin){
+                if (_this.isLogin) {
                     location.reload();
                 }
             };
@@ -813,7 +888,7 @@
                         }
                     },
                 });
-            },1)
+            }, 600)
         }
     })
 </script>
