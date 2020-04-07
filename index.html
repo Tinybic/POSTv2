@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>POSTHTX</title>
+    <title>POST Houston | A Hub for Food, Shopping, Workspace and Recreation</title>
+    <meta name="description" content="Welcome to POST Houston, located in Downtown Houston. POST will transform the former Barbara Jordan Post Office into a hub for food, shopping, workspace and recreation.">
+    <link rel="canonical" href="https://posthtx.com/">
+    <link rel="shortcut icon" type="image/png" href="https://posthtx.com/wp-content/uploads/2019/06/favicon4.png" sizes="32x32">
+
+
     <link rel="stylesheet" href="css/fullpage.css">
     <link rel="stylesheet" href="https://use.typekit.net/ihh3pzc.css">
     <link rel="stylesheet" href="css/index.css">
@@ -13,7 +18,6 @@
     <script src="js/axios.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="js/fullpage.js"></script>
-
 </head>
 <body>
 
@@ -152,8 +156,8 @@
                             <a :href="item.Hyperlink" target="_blank"><div class="section1-div-title">{{item.Title}}</div></a>
                         </div>
                         <div v-else class="section1-div section1-div-landscape">
-                            <a :href="item.Hyperlink" target="_blank"><div class="description">{{item.Description}}</div></a>
-                            <a :href="item.Hyperlink" target="_blank"><div :style="{background:item.Background}" class="section1-div-title">{{item.Title}}</div></a>
+                            <div class="description"><a :href="item.Hyperlink" target="_blank">{{item.Description}}</a></div>
+                            <div :style="{background:item.Background}" class="section1-div-title"><a :href="item.Hyperlink" target="_blank" >{{item.Title}}</a></div>
                         </div>
                     </div>
                 </div>
@@ -299,7 +303,7 @@
                                 <div>
                                     <span class="event-title">{{item.Category}}</span>
                                     <a :href="item.Hyperlink" target="_blank"><span class="event-name">{{item.Title}}</span></a>
-                                    <span class="event-date">{{item.Date}}</span>
+                                    <span class="event-date">{{item.localDate}}</span>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +315,7 @@
                                 </div>
                                 <span class="event-title">{{subItem.Category}}</span>
                                 <a :href="subItem.Hyperlink" target="_blank"><span class="event-name">{{subItem.Title}}</span></a>
-                                <span class="event-date">{{subItem.Date}}</span>
+                                <span class="event-date">{{subItem.localDate}}</span>
                             </div>
                             <!--<div class="section2-item">-->
                             <!--<div class="news-img-contain">-->
@@ -445,7 +449,8 @@
                             <p class="layout2-title">{{item.Caption}}</p>
                             <img class="slide-img" :src="item.Image.url" alt="">
                         </div>
-                        <footer-component v-bind:is-phone-landscape="isPhoneLandscape"
+                        <footer-component v-bind:is-mobile="isMobile"
+                                          v-bind:is-phone-landscape="isPhoneLandscape"
                                           v-if="!isPhone && !isPhoneLandscape"></footer-component>
                     </div>
                     <!--<div v-if="!isMobile" class="slide slide-img-contain">-->
@@ -462,9 +467,8 @@
                 <div class="next" @mouseover="showArrow()" @mouseout="showArrow()" @click="swipeSlide(1)"></div>
             </div>
 
-            <div class="section" id="section4">
-                <footer-component v-bind:is-mobile="isMobile"
-                                  v-bind:is-phone-landscape="isPhoneLandscape"></footer-component>
+            <div class="section" id="section4" v-if="isMobile">
+                <footer-component v-bind:is-mobile="isMobile" v-bind:is-phone-landscape="isPhoneLandscape"></footer-component>
             </div>
         </div>
     </div>
@@ -514,6 +518,7 @@
     <transition>
         <div v-if="showMailDialog" class="sidebar-contain">
             <div class="mail-contain">
+                <div v-if="showMailNotice" class="mail-notice">{{mailNotice}}</div>
                 <div class="close-side-contain" @click="changeSideBarStatus('mail')">
                     <img src="image/icons/close.svg" alt="close" class="close-mail">
                 </div>
@@ -525,63 +530,6 @@
         </div>
     </transition>
 
-    <!--footer component-->
-    <template id="footerComponent">
-        <div class="footer">
-            <div class="footer-column">
-                <span>© 2020 Lovett Commercial, All Rights Reserved</span>
-            </div>
-            <div class="footer-column site-map">
-                <span>SITE MAP</span>
-                <span class="mt40 footer-link">About</span>
-                <span class="footer-link">POST</span>
-                <span class="footer-link">Market</span>
-                <span class="footer-link">Music</span>
-                <span class="footer-link">Farm</span>
-                <span class="mt40">What`s New</span>
-                <span class="footer-link">Press</span>
-                <span class="footer-link">Events</span>
-                <span class="mt40">Leasing</span>
-                <span class="footer-link">Rental</span>
-            </div>
-            <div class="footer-column">
-                <span>CONTACT</span>
-                <span class="mt40">401 Franklin St Houston, TX 77201 hello@posthtx.com 713 978 3433</span>
-                <div v-if="isPhoneLandscape" class="mt40">
-                    <span>CONNECT</span>
-                    <span class="mt40">
-                        <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
-                           rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
-                    </span>
-                    <span>
-                        <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
-                           rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
-                    </span>
-                </div>
-            </div>
-            <div class="footer-column" v-if="!isPhoneLandscape">
-                <span>CONNECT</span>
-                <span class="mt40">
-                    <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
-                       rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
-                </span>
-                <span>
-                    <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
-                       rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
-                </span>
-            </div>
-            <div class="footer-column-lg">
-                <span>SUBSCRIBE</span>
-                <span class="mt40">Sign up for our newsletter. We promise not to spam.</span>
-                <div class="mt40 footer-link email" :class="{footerSignup:isMobile}"
-                     @click="changeSideBarStatus('mail')">
-                    <span v-if="!isMobile">email here</span>
-                    <span v-else>sign up</span>
-                    <img src="image/icons/right.svg" alt="click" style="width: 36px;">
-                </div>
-            </div>
-        </div>
-    </template>
 
     <!--login-->
     <div id="loginComponent" v-if="!isLogin">
@@ -600,6 +548,66 @@
         </div>
     </div>
 </div>
+
+<!--footer component-->
+<template id="footerComponent">
+    <div class="footer">
+        <div class="footer-column">
+            <span>© 2020 Lovett Commercial, All Rights Reserved</span>
+        </div>
+        <div class="footer-column site-map">
+            <span>SITE MAP</span>
+            <span class="mt40 footer-link">About</span>
+            <span class="footer-link" @click="jumpTo(0)">POST</span>
+            <span class="footer-link">Shop</span>
+            <span class="footer-link">Market</span>
+            <span class="footer-link">Work</span>
+            <span class="footer-link">Music</span>
+            <span class="footer-link">Farm</span>
+            <!--<span class="mt40">What`s New</span>-->
+            <!--<span class="footer-link">Press</span>-->
+            <!--<span class="footer-link">Events</span>-->
+            <span class="mt40">Leasing</span>
+            <span class="footer-link">Rental</span>
+        </div>
+        <div class="footer-column">
+            <span>CONTACT</span>
+            <span class="mt40">401 Franklin St Houston, TX 77201 hello@posthtx.com 713 978 3433</span>
+            <div v-if="isPhoneLandscape" class="mt40">
+                <span>CONNECT</span>
+                <span class="mt40">
+                        <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
+                           rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
+                    </span>
+                <span>
+                        <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
+                           rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
+                    </span>
+            </div>
+        </div>
+        <div class="footer-column" v-if="!isPhoneLandscape">
+            <span>CONNECT</span>
+            <span class="mt40">
+                    <a title="Facebook" href="https://www.facebook.com/posthouston/" target="_blank"
+                       rel="noopener" data-mce-href="https://www.facebook.com/posthouston/">Facebook</a>
+                </span>
+            <span>
+                    <a title="Instagram" href="https://www.instagram.com/posthtx/" target="_blank"
+                       rel="noopener" data-mce-href="https://www.instagram.com/posthtx/">Instagram</a>
+                </span>
+        </div>
+        <div class="footer-column-lg">
+            <span>SUBSCRIBE</span>
+            <span class="mt40">Sign up for our newsletter. We promise not to spam.</span>
+            <div class="mt40 footer-link email" :class="{footerSignup:isMobile}"
+                 @click="changeSideBarStatus('mail')">
+                <span v-if="!isMobile">email here</span>
+                <span v-else>sign up</span>
+                <img src="image/icons/right.svg" alt="click" style="width: 36px;">
+            </div>
+        </div>
+    </div>
+</template>
 
 
 <script type="text/javascript">
@@ -628,7 +636,7 @@
             isPhoneLandscape: false,
             userName: '',
             password: '',
-            isLogin: true,
+            isLogin: false,
             sectionIndex: 0,
             email: '',
             pres: null,
@@ -636,7 +644,9 @@
             firstSection: '',
             secondSection: '',
             thirdSection: '',
-            fourthSection: ''
+            fourthSection: '',
+            showMailNotice:false,
+            mailNotice:''
         },
         methods: {
             showArrow() {
@@ -700,10 +710,50 @@
             },
             submitEmail() {
                 if (this.email.match(/@/ig)) {
-                    this.showMailDialog = false;
-                    console.log(this.email);
+                    let _this = this;
+                    axios.get('https://www.intownhomes.com/GetData/SaveNewletter2.ashx?first='+''+'&last='+''+'&email='+this.email+'&phone='+''+'&company='+''+'&sqft=&message='+'')
+                        .then(function (res) {
+                            console.log(res);
+                            if (res.status === 200 && res.data.result==='1') {
+                                _this.mailNotice = 'Thanks for your subscription';
+                                _this.showMailNotice = true;
+
+                                setTimeout(function () {
+                                    _this.showMailNotice = false;
+                                    _this.showMailDialog = false;
+                                },2000)
+                            } else {
+                                _this.mailNotice = 'Invalid Email';
+                                _this.showMailNotice = true;
+
+                                setTimeout(function () {
+                                    _this.showMailNotice = false;
+                                },2000)
+                                console.log('ERROR' + res);
+                            }
+                        })
+                        .catch(function (error) {
+                            _this.mailNotice = 'Invalid Email';
+                            _this.showMailNotice = true;
+
+                            setTimeout(function () {
+                                _this.showMailNotice = false;
+                            },2000)
+                            console.log(error);
+                        });
                 } else {
-                    console.log('email is invalid');
+                    let _this = this;
+                    this.mailNotice = 'Invalid Email';
+                    this.showMailNotice = true;
+
+                    setTimeout(function () {
+                        _this.showMailNotice = false;
+                    },2000)
+                }
+            },
+            jumpTo(url) {
+                if(url===0){
+
                 }
             },
             getFirstSection() {
@@ -753,8 +803,15 @@
                     .then(function (res) {
                         if (res.status === 200) {
                             if (res.data.length > 0) {
+                                let year = new Date().getFullYear();
                                 res.data.forEach(function (e) {
                                     e.Image.url = 'https://admin.posthtx.com/' + e.Image.url;
+                                    let dateList = e.Date.split('-');
+                                    if(parseInt(dateList[0])!==year){
+                                        e.localDate = dateList[1]+'/'+dateList[2]+'/'+dateList[0];
+                                    }else{
+                                        e.localDate = dateList[1]+'/'+dateList[2];
+                                    }
                                 })
                             }
 
@@ -780,7 +837,6 @@
                 axios.get(URL + '/fourth-photo-galleries')
                     .then(function (res) {
                         if (res.status === 200) {
-                            console.log(res);
                             if(res.data.length>0){
                                 res.data.forEach(function (e) {
                                     e.Image.url = 'https://admin.posthtx.com/'+ e.Image.url;
@@ -808,6 +864,9 @@
                                 console.log(res);
                                 sessionStorage.setItem("token", res.data.jwt);
                                 that.isLogin = true;
+                                if(that.isMobile){
+                                    location.reload();
+                                }
                             } else {
                                 alert("please input check your user name and password");
                             }
@@ -821,7 +880,6 @@
                 }
             }
         },
-
         beforeMount: function () {
             if (this._isMobile()) {
                 this.isMobile = true;
@@ -852,7 +910,7 @@
             //initial full page object
             window.onresize = function temp() {
                 if (_this.isLogin) {
-                    location.reload();
+                    // location.reload();
                 }
             };
         },
@@ -864,6 +922,7 @@
                     slidesNavigation: true,
                     scrollOverflow: true,
                     autoScrolling: true,
+                    keyboardScrolling: true,
                     fitToSection: true,
                     normalScrollElements: '.sidebar, .description',
                     onLeave: function (origin, destination, direction) {
@@ -888,9 +947,11 @@
                         }
                     },
                 });
+                $('body').css('opacity','100');
             }, 600)
         }
     })
+
 </script>
 </body>
 </html>

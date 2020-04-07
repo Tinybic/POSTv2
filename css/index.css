@@ -12,6 +12,8 @@ body {
     font-family: neue-haas-grotesk-display, sans-serif;
     color: #fff;
     font-weight: 500;
+    opacity: 0;
+    transition: opacity linear 0.3s;
 }
 
 
@@ -463,6 +465,16 @@ a, ul, li {
     width: 390px;
     height: 312px;
     padding: 30px;
+    position: relative;
+}
+
+.mail-notice{
+    position: absolute;
+    top: 34px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 22px;
 }
 
 .close-mail {
@@ -1078,11 +1090,22 @@ a, ul, li {
         overflow: hidden;
     }
 
+    .section1-div-landscape .description a{
+        font-size: 32px;
+        line-height: 32px;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
     .section1-div-landscape .section1-div-title{
         line-height: 7rem;
         padding: 7vh 3.7vw;
         box-sizing: border-box;
     }
+
 
     .section1-div p {
         position: absolute;
@@ -1098,6 +1121,15 @@ a, ul, li {
     }
 
     .section1-div-title {
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        width: 100%;
+        font-size: 9rem;
+        line-height: 7rem;
+    }
+
+    .section1-div-landscape .section1-div-title a{
         display: flex;
         align-items: flex-end;
         height: 100%;
@@ -1302,6 +1334,12 @@ a, ul, li {
 
     #section4 .layout1 .slide-img {
         height: 28vw;
+    }
+
+    #section4 .fp-scroller {
+        width: 100%;
+        height: 100%;
+        padding: 0 3.1vw;
     }
 
     .footer {
