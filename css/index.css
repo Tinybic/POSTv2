@@ -66,6 +66,11 @@ a, ul, li {
     z-index: 2;
 }
 
+.fp-slide {
+    padding: 0 1px;
+    box-sizing: border-box;
+}
+
 .fp-prev, .fp-next {
     display: none;
 }
@@ -177,7 +182,7 @@ a, ul, li {
 }
 
 .section0-contain, .section1-contain, .section2-contain, .section3-contain {
-    padding: 0 3.1vw;
+    padding: 0 calc(3.1vw - 1px);
 }
 
 .section1-div {
@@ -235,18 +240,25 @@ a, ul, li {
 
 .section2-contain > div {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 #section2 .slide-img-contain .section2-item {
     width: 29vw;
-    height: 100%
+    height: 100%;
+    margin-right: 3.4vw;
+}
+
+#section2 .slide-img-contain .section2-item:nth-child(3){
+    margin-right: 0;
 }
 
 #section2 .slide-img-contain .section2-item .event-img-contain {
     width: 100%;
-    height: 29vw;
+    /*height: 29vw;*/
     cursor: pointer;
+    max-height: 33vw;
+    overflow: hidden;
 }
 
 #section2 .slide-img-contain .section2-item .news-img-contain {
@@ -338,7 +350,10 @@ a, ul, li {
 
 #section3 .layout2-title, #section4 .layout2-title {
     display: block;
-    width: 35%;
+    word-break: break-all;
+    /*width: 35%;*/
+    width: auto;
+    margin-right: 3.1vw;
     height: 100%;
     overflow: hidden;
 }
@@ -497,11 +512,12 @@ a, ul, li {
 }
 
 .submit-btn {
+    font-family: neue-haas-grotesk-display, sans-serif;
     display: block;
     margin: 90px auto 0;
     /*width: 160px;*/
     height: 60px;
-    /*padding: 0 30px;*/
+    padding: 0 30px;
     text-align: center;
     border: solid 2px #fff;
     /*line-height: 60px;*/
@@ -702,6 +718,20 @@ a, ul, li {
         padding: 9vh 0;
     }
 
+    #section2 .slide-img-contain .section2-item .event-img-contain {
+        max-height: 46vw;
+    }
+
+    #section2 .slide-img-contain .section2-item .event-title, #section2 .slide-img-contain .section2-item-phone .event-title{
+        line-height: 0.875rem;
+        margin: 10px 0 10px;
+    }
+
+    #section2 .slide-img-contain .section2-item .event-name, #section2 .slide-img-contain .section2-item-phone .event-name{
+        line-height: 2.5rem;
+        margin-bottom: 10px;
+    }
+
     #section3 .slide-img-contain > div {
         padding: 0;
     }
@@ -724,12 +754,15 @@ a, ul, li {
     }
 
     .section2-contain > div {
+        justify-content: space-between;
         flex-wrap: wrap;
     }
+
 
     #section2 .slide-img-contain .section2-item {
         width: 46vw;
         margin-bottom: 20px;
+        margin-right: 0;
     }
 
     #section3 .layout1-title {
@@ -746,7 +779,7 @@ a, ul, li {
     /*}*/
     .footer {
         padding: 40px 0 200px;
-        margin: 72px 3.1vw 0;
+        margin: 9.5vh 3.1vw 0;
         border-top: solid 2px #fff;
     }
 
@@ -890,7 +923,9 @@ a, ul, li {
 
     .section2-item-phone .event-img-contain {
         width: 100vw;
-        height: 100vw;
+        height: auto;
+        max-height: 66vh;
+        overflow: hidden;
     }
 
     .event-title, .event-date, .event-name {
@@ -1266,6 +1301,7 @@ a, ul, li {
     }
 
     .submit-btn {
+        font-family: neue-haas-grotesk-display, sans-serif;
         display: block;
         margin: 56px auto 0;
         line-height: normal;

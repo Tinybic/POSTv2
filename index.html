@@ -307,8 +307,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()"
-                             v-for="(item, index) in thirdSection">
+                        <div v-else @mouseover="showArrow()" @mouseout="hideArrow()">
                             <div v-for="subItem in item" class="section2-item">
                                 <div class="event-img-contain">
                                     <a :href="subItem.Hyperlink" target="_blank"><img class="event-img" :src="subItem.Image.url" alt="event"></a>
@@ -861,7 +860,7 @@
                     })
                         .then(function (res) {
                             if (res.status === 200) {
-                                console.log(res);
+                                // console.log(res);
                                 sessionStorage.setItem("token", res.data.jwt);
                                 that.isLogin = true;
                                 if(that.isMobile){
