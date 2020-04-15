@@ -247,8 +247,8 @@ a, ul, li {
      vertical-align: unset;
 }
 
-#section2 .slide-img-contain > div {
-    padding: 9vh 0;
+#section2 .slide-img-contain .section2-contain {
+    padding-top: 9vh;
 }
 
 #section2 .slide-img-contain .section2-item {
@@ -726,6 +726,10 @@ a, ul, li {
         padding: 9vh 0;
     }
 
+    #section2 .slide-img-contain .section2-contain {
+        padding-top: 0;
+    }
+
     #section2 .slide-img-contain .section2-item .event-img-contain {
         max-height: 46vw;
     }
@@ -924,6 +928,10 @@ a, ul, li {
         height: auto;
     }
 
+    #section2 .slide-img-contain .section2-contain {
+        padding-top: 0;
+    }
+
     .section2ContainPhone {
         display: block;
         padding: 0;
@@ -1033,6 +1041,10 @@ a, ul, li {
     }
     .logo{
         left: 3.7vw;
+    }
+
+    #section2 .slide-img-contain .section2-contain {
+        padding-top: 0;
     }
     .menu img, #section1 .menu img, #section1mobile .menu img {
         width: 31px;
@@ -1363,6 +1375,11 @@ a, ul, li {
         line-height: 6.5rem;
         width: 60%;
     }
+
+    #section2 .slide-img-contain .section2-contain {
+        padding-top: 0;
+    }
+
 
     #section3 .slide-img-contain > div {
         padding: 0;
