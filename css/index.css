@@ -243,6 +243,14 @@ a, ul, li {
     /*justify-content: space-between;*/
 }
 
+#section2 .fp-tableCell {
+     vertical-align: unset;
+}
+
+#section2 .slide-img-contain > div {
+    padding: 9vh 0;
+}
+
 #section2 .slide-img-contain .section2-item {
     width: 29vw;
     height: 100%;
